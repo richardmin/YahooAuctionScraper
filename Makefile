@@ -1,7 +1,10 @@
 init:
-    pip install -r requirements.txt
+	pip install -r requirements.txt
 
 test:
-    pytest
+	python -m pytest tests/
 
-.PHONY: init test
+venv:
+	python -m venv . 
+	
+.PHONY: init test venv

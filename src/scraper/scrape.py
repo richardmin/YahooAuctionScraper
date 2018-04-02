@@ -1,7 +1,7 @@
 import os.path
 import urllib.parse
 
-from lxml import html
+from lxml import etree
 import requests
 
 class Scraper:
@@ -59,19 +59,21 @@ class Scraper:
         return urllib.parse.urlunparse(newURL)
 
     @staticmethod
-    def getPrevPage(url):
+    def getPrevPageURL(url):
         return Scraper._paginate(url, False)
 
     @staticmethod
-    def getNextPage(url):
+    def getNextPageURL(url):
         return Scraper._paginate(url, True)
 
     @staticmethod
-    def downloadSite(url):
+    def downloadSite(url, filename):
+        page = requests.get(url)
         pass
     
     @staticmethod
     def downloadImage(imageURL):   
+        url = urllib.parse.urlparse(imageURL)
         pass
         
     @staticmethod
@@ -79,13 +81,29 @@ class Scraper:
         pass
 
     @staticmethod
-    def extractAucIDs(page):
+    def extractAucLinks(page):
+        return page.xpath('//*/td/div/h3/a/@href')
+
+    @staticmethod
+    def extractAucIDs(self):
+        Scraper.extractAucLinks("filler")
         pass
 
 class Page:
-    def __init__(self, url):
+    def __init__(self, url, method="get"):
         self.url = url
-    
-    def get():
-        # fetch requests
-        pass
+        self.method = method
+
+    def fetch(self):
+        if self.method == "get":
+            self.page = requests.get(self.url)
+        elif self.method == "post":
+            pass
+        elif self.method == "put":
+            pass
+        elif self.method == "delete":
+            pass
+        elif self.method == "head":
+            pass
+        elif self.method == "options":
+            pass
