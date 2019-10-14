@@ -2,9 +2,9 @@ init:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest tests/
+	python3 -m pytest tests/
 
 venv:
-	python -m venv . 
+	pipenv shell
 	
 .PHONY: init test venv

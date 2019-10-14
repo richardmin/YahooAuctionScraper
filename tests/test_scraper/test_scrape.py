@@ -45,3 +45,7 @@ def test_getPrevPrevPage_n100b101():
 def test_extractAucLinks(examplePages, examplePage_aucLinks):
     for page, aucLinks in zip(examplePages, examplePage_aucLinks):
         assert Scraper.extractAucLinks(page) == aucLinks
+
+def test_extactAucIDs(examplePage_aucLinks):
+    for aucLinks in examplePage_aucLinks:
+        assert aucLinks

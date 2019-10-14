@@ -2,13 +2,13 @@ import os.path
 import urllib.parse
 
 from lxml import etree
-import requests
 
 class Scraper:
     def __init__(self, config_filename):
         self.urls = []
-        
+        # TODO:
         # question: should we instead pass in the file tag?
+        # or maybe we should pass in the text, for dep. inj
         # come back to this
         f = open(config_filename, "r")
         for line in f:
@@ -27,7 +27,6 @@ class Scraper:
         url = urllib.parse.urlparse(url)
         queryParams = urllib.parse.parse_qs(url.query)
         
-        print(queryParams)
         if 'n' in queryParams:
             # TODO: Note that this is risky, because there can be multiple parameters that share the same key.
             # What we do is (blindly) ignore arguments that are not the first.
@@ -69,6 +68,7 @@ class Scraper:
     @staticmethod
     def downloadSite(url, filename):
         page = requests.get(url)
+        path = os.getcwd()
         pass
     
     @staticmethod
@@ -85,25 +85,5 @@ class Scraper:
         return page.xpath('//*/td/div/h3/a/@href')
 
     @staticmethod
-    def extractAucIDs(self):
-        Scraper.extractAucLinks("filler")
-        pass
-
-class Page:
-    def __init__(self, url, method="get"):
-        self.url = url
-        self.method = method
-
-    def fetch(self):
-        if self.method == "get":
-            self.page = requests.get(self.url)
-        elif self.method == "post":
-            pass
-        elif self.method == "put":
-            pass
-        elif self.method == "delete":
-            pass
-        elif self.method == "head":
-            pass
-        elif self.method == "options":
-            pass
+    def extractAucIDs(links):
+        return [link.split('/')[-1] for link in links]
