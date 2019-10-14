@@ -2,7 +2,12 @@ init:
 	pip install -r requirements.txt
 
 test:
-	python3 -m pytest tests/
+	python -m pytest --cov-report term-missing:skip-covered --cov=src/ tests/
+
+test-coverage-report:
+	python -m pytest --cov-report term-missing:skip-covered \
+		--cov-report html:htmlcov \
+		--cov=src/ tests/
 
 venv:
 	pipenv shell
