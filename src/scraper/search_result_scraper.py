@@ -1,9 +1,10 @@
 import os.path
 import urllib.parse
+import scrapy
 
 from lxml import etree
 
-class Scraper:
+class SearchResultScraper:
     def __init__(self, config_filename):
         self.urls = []
         # TODO:
@@ -59,11 +60,11 @@ class Scraper:
 
     @staticmethod
     def getPrevPageURL(url):
-        return Scraper._paginate(url, False)
+        return SearchResultScraper._paginate(url, False)
 
     @staticmethod
     def getNextPageURL(url):
-        return Scraper._paginate(url, True)
+        return SearchResultScraper._paginate(url, True)
 
     @staticmethod
     def downloadSite(url, filename):

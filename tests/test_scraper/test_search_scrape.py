@@ -1,4 +1,4 @@
-from src.scraper.scrape import Scraper
+from src.scraper.search_result_scraper import SearchResultScraper as Scraper
 import pytest
 
 slashlessGoogle = "http://www.google.com"

@@ -11,5 +11,8 @@ test-coverage-report:
 
 venv:
 	pipenv shell
+
+clean:
+	rm -rf htmlcov
 	
 .PHONY: init test venv
