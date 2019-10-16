@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "${workspaceRoot}/bin/python",
+    "python.pythonPath": "/Users/richardmin/.local/share/virtualenvs/YahooScraper-9xevYe5j/bin/python",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -9,5 +9,7 @@
         "**/*.pyc": {"when": "$(basename).py"}, 
         "**/__pycache__": true,
         "**/.pytest_cache": true
-    }
+    },
+    "python.analysis.autoSearchPaths": false,
+    "python.autoComplete.extraPaths": ["./"]
 }
