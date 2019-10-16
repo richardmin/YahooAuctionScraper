@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 pytest = "~=5.2.1"
 pytest-cov = "~=2.8.1"
+yapf = "*"
 
 [packages]
 lxml = "~=4.4.1"

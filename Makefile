@@ -9,10 +9,10 @@ test-coverage-report:
 		--cov-report html:htmlcov \
 		--cov=src/ tests/
 
-venv:
+env:
 	pipenv shell
 
 clean:
 	rm -rf htmlcov
 	
-.PHONY: init test venv
+.PHONY: init test test-coverage-report env
