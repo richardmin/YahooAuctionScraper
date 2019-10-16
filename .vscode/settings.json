@@ -14,5 +14,7 @@
     "python.autoComplete.extraPaths": [
         "./"
     ],
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": ["--style", "google"]
 }
