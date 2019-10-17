@@ -4,7 +4,8 @@ import scrapy
 
 from lxml import etree
 
-class Scraper:
+
+class Scraper(object):
     def __init__(self, config_filename):
         self.urls = []
         # TODO:
@@ -29,10 +30,10 @@ class Scraper:
         queryParams = urllib.parse.parse_qs(url.query)
 
         if 'n' in queryParams:
-            # TODO: Note that this is risky, because there can be multiple 
+            # TODO: Note that this is risky, because there can be multiple
             # parameters that share the same key. What we do is (blindly) ignore
-            #  arguments that are not the first. A better method to do is look 
-            # at the format, and see if it's a number. If it's a number, we can 
+            #  arguments that are not the first. A better method to do is look
+            # at the format, and see if it's a number. If it's a number, we can
             # assume it's a key, otherwise we assume there's some garbage in the
             # url and strip it out.
             offset = int(queryParams['n'][0])
@@ -70,7 +71,7 @@ class Scraper:
 
     @staticmethod
     def downloadSite(url, filename):
-        page = requests.get(url)
+        # page = requests.get(url)
         path = os.getcwd()
         pass
 

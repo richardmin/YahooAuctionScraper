@@ -9,6 +9,9 @@ test-coverage-report:
 		--cov-report html:htmlcov \
 		--cov=src/ tests/
 
+lint:
+	pylint 
+
 env:
 	pipenv shell
 
