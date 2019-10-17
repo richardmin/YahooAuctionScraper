@@ -4,7 +4,7 @@ import scrapy
 
 from lxml import etree
 
-class SearchResultScraper:
+class Scraper:
     def __init__(self, config_filename):
         self.urls = []
         # TODO:
@@ -29,10 +29,12 @@ class SearchResultScraper:
         queryParams = urllib.parse.parse_qs(url.query)
 
         if 'n' in queryParams:
-            # TODO: Note that this is risky, because there can be multiple parameters that share the same key.
-            # What we do is (blindly) ignore arguments that are not the first.
-            # A better method to do is look at the format, and see if it's a number. If it's a number, we can assume
-            # it's a key, otherwise we assume there's some garbage in the url and strip it out.
+            # TODO: Note that this is risky, because there can be multiple 
+            # parameters that share the same key. What we do is (blindly) ignore
+            #  arguments that are not the first. A better method to do is look 
+            # at the format, and see if it's a number. If it's a number, we can 
+            # assume it's a key, otherwise we assume there's some garbage in the
+            # url and strip it out.
             offset = int(queryParams['n'][0])
         else:
             # 20 is the default pagination
@@ -60,11 +62,11 @@ class SearchResultScraper:
 
     @staticmethod
     def getPrevPageURL(url):
-        return SearchResultScraper._paginate(url, False)
+        return Scraper._paginate(url, False)
 
     @staticmethod
     def getNextPageURL(url):
-        return SearchResultScraper._paginate(url, True)
+        return Scraper._paginate(url, True)
 
     @staticmethod
     def downloadSite(url, filename):
