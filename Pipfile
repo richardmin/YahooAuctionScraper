@@ -11,7 +11,7 @@ pylint = "~=2.4.2"
 
 [packages]
 lxml = "~=4.4.1"
-scrapy = "~=1.7.3"
+scrapy = "~=2.6.2"
 flask = "~=1.1.1"
 
 [requires]
